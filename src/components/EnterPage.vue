@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="access">
-
+            <TypingTextVue />
         </div>
         <div class="init">
             <h1 class="title">
@@ -38,6 +38,7 @@
 <script>
 import gsap from 'gsap'
 import { Messenger } from '../assets/js/buttonGlitch.js'
+import TypingTextVue from './TypingText.vue'
 
 export default {
     name: 'EnterPage',
@@ -48,24 +49,36 @@ export default {
         }
     },
 
+    components: {
+        TypingTextVue
+    },
+
 
     mounted() {
         document.querySelector('body').style.overflow = 'hidden';
         this.animePoint();
         var messenger = new Messenger($('#messenger'));
-        // gsap.fromTo('#cursor', { autoAlpha: 0, x: -20 }, { autoAlpha: 1, duration: 0.5, repeat: -1, ease: "steps(12)" });
 
-        // let tween = gsap.to("#text", { text: { value: "this is a custom text written to show my easy approaches to make the typewriting easy!" }, duration: 5, delay: 1, ease: "none" })
     },
 
     methods: {
 
         enter() {
+            let init = document.querySelector('.init');
             let welcome = document.querySelector('.welcome');
             welcome.style.display = 'none';
 
             let access = document.querySelector('.access');
             access.style.display = 'block';
+
+            setTimeout(() => {
+                access.style.display = 'none';
+                init.style.display = 'block';
+
+                setTimeout(() => {
+                    this.scale();
+                }, 4000);
+            }, 10000);
         },
 
         animePoint() {
@@ -80,9 +93,7 @@ export default {
 
             }, 3000);
 
-            setTimeout(() => {
-                this.scale();
-            }, 4000);
+
         },
 
         scale() {
@@ -93,7 +104,8 @@ export default {
             h1.style.opacity = '0';
 
             setTimeout(() => {
-                // main.style.display = 'none';
+                main.style.display = 'none';
+                this.$router.push('/home');
             }, 1000);
         }
     }
@@ -108,6 +120,16 @@ export default {
 // $bg-color: #4242e6;
 // $glitch-bg-color: $bg-color;
 
+.welcome,
+.init,
+.access {
+    z-index: 10;
+}
+
+.init,
+.access {
+    display: none;
+}
 
 
 @keyframes opacity {
@@ -173,7 +195,7 @@ export default {
     .label {
         color: #33ff69;
         font-family: 'Press Start 2P', cursive;
-        background-color: black;
+        background-color: transparent;
         margin-left: 16px;
         padding: 16px;
         font-size: 16px;
@@ -185,7 +207,7 @@ export default {
     input {
         color: #33ff69;
         font-family: 'Press Start 2P', cursive;
-        background-color: black;
+        background-color: transparent;
         border: none;
         border-bottom: 2px solid #33ff69;
         padding: 16px;
@@ -194,13 +216,17 @@ export default {
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
 .inp-btn {
     color: #33ff69;
+    background-color: transparent;
     font-family: 'Press Start 2P', cursive;
-    background-color: black;
     margin-top: 50px;
     border: none;
     padding: 16px;
@@ -224,7 +250,6 @@ export default {
 .center {
     position: fixed;
     background-image: url('../assets/img/bg_tv.gif');
-
 }
 
 
@@ -233,7 +258,6 @@ main {
 }
 
 h1 {
-    display: none;
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     font-weight: bold;

@@ -1,8 +1,8 @@
 // Love dynamically typed text? You're gonna love this
 // Edit these strings to see them typed on the screen:
 $strings: (
-    "Bienvenue dans le programme Trinity"
-    "Veuillez composer votre code personnel à trois chiffres"
+    "Authentification en cours…"
+    "Accès autorisé"
 );
 
 // now for some timing (in seconds)
@@ -105,9 +105,10 @@ body {
     height: 100%;
 }
 
-.typewriter {
-
+.typewriteraccess {
     background-repeat: repeat-y;
+    font-size: 24px;
+    font-family: 'Press Start 2P', cursive;
     background-position: center center;
     background-size: cover, 100% 3px;
     font-size: 29px;
@@ -138,6 +139,11 @@ body {
 
     &::before {
         // just generating some useful stats here 👋🏼
+
+
+        @media (max-width: 575px) {
+            content: "#{length($strings)} strings \A #{$charCount} chars \A #{$durTotal}s duration";
+        }
 
         display: block;
         position: absolute;
