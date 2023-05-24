@@ -97,6 +97,7 @@ export default {
 
 <style scoped lang="scss">
 .pre-loader {
+    position: relative;
     width: 100%;
     height: 100vh;
     background: #0a0a0a;
@@ -106,15 +107,25 @@ export default {
     align-items: center;
     z-index: 2;
 
+    &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../assets/img/bg_tv.gif');
+        content: '';
+        z-index: 1;
+        opacity: 0.7;
+    }
+
     &-container {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-
-
-
 
         .header {
             position: relative;
@@ -154,7 +165,7 @@ export default {
                     left: -20px;
                     width: 110%;
                     height: 120px;
-                    background: #0a0a0a;
+                    // background: #0a0a0a;
 
                 }
             }
