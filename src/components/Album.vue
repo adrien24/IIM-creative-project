@@ -189,15 +189,25 @@ export default {
             }
 
             h1 {
+                // position: relative;
+                // top: 125px;
+                // text-transform: uppercase;
+                // text-align: center;
+                // font-family: sans-serif;
+                // font-size: 7vw;
+                // line-height: 90%;
+                // color: rgba(10, 10, 10, 0.8);
+                // -webkit-text-stroke: 2px rgba(65, 249, 52, 0.8);
+                
                 position: relative;
                 top: 125px;
                 text-transform: uppercase;
                 text-align: center;
-                font-family: sans-serif;
-                font-size: 7vw;
-                line-height: 90%;
+                font-family: 'Megatron';
+                font-size: 6vw;
+                line-height: 115%;
                 color: rgba(10, 10, 10, 0.8);
-                -webkit-text-stroke: 2px rgba(65, 249, 52, 0.8);
+                -webkit-text-stroke: 0.5px rgba(65, 249, 52, 0.6);
 
                 span {
                     position: relative;
@@ -219,6 +229,10 @@ export default {
 
         .concat {
             display: flex;
+        }
+
+        .premier, .deuxieme {
+            font-family: 'RemboyR' !important;
         }
     }
 }
