@@ -6,10 +6,10 @@ $strings: (
 );
 
 // now for some timing (in seconds)
-$durCharFwd: 0.05; // character typed
-$durFullGap: 2.00; // time between typed/delete
+$durCharFwd: 0.03; // character typed
+$durFullGap: 1.00; // time between typed/delete
 $durCharBwd: 0.03; // character deleted
-$durDoneGap: 1.00; // time between strings
+$durDoneGap: 0.5; // time between strings
 
 // initializing some variables and functions ✊🏼
 $charCount: 0;
@@ -107,6 +107,7 @@ body {
 
 .typewriteraccess {
     background-repeat: repeat-y;
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.75);
     font-size: 24px;
     font-family: 'Press Start 2P', cursive;
     background-position: center center;

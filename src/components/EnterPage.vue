@@ -27,8 +27,8 @@
         <div class="init">
             <h1 class="title">
                 <span class="glitch" data-text="help•">
-                    <span class="flex">initialisation<span class="first">.</span><span class="second">.</span><span
-                            class="third">.</span></span>
+                    <span class="flex">initialisation du programme<span class="first">.</span><span
+                            class="second">.</span><span class="third">.</span></span>
                 </span>
             </h1>
         </div>
@@ -77,8 +77,14 @@ export default {
 
                 setTimeout(() => {
                     this.scale();
+                    setTimeout(() => {
+                        let video = document.getElementById('myVideo');
+                        video.play();
+                        let main = document.querySelector('.center');
+                        main.style.display = 'none';
+                    }, 1000);
                 }, 4000);
-            }, 10000);
+            }, 6500);
         },
 
         animePoint() {
@@ -98,15 +104,10 @@ export default {
 
         scale() {
             let h1 = document.querySelector('.title');
-            let main = document.querySelector('.center');
+
             h1.style.transition = 'all 1s ease-in-out';
             h1.style.transform = 'scale(150)';
             h1.style.opacity = '0';
-
-            setTimeout(() => {
-                main.style.display = 'none';
-                this.$router.push('/home');
-            }, 1000);
         }
     }
 }
@@ -119,6 +120,10 @@ export default {
 
 // $bg-color: #4242e6;
 // $glitch-bg-color: $bg-color;
+
+#messenger {
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.75);
+}
 
 .welcome,
 .init,
@@ -181,7 +186,7 @@ export default {
     }
 
     50% {
-        border-color: rgba(51, 255, 51, 0.75);
+        border-color: #3f3;
     }
 }
 
@@ -193,7 +198,7 @@ export default {
     margin-top: 30px;
 
     .label {
-        color: #33ff69;
+        color: #3f3;
         font-family: 'Press Start 2P', cursive;
         background-color: transparent;
         margin-left: 16px;
@@ -205,11 +210,11 @@ export default {
     }
 
     input {
-        color: #33ff69;
+        color: #3f3;
         font-family: 'Press Start 2P', cursive;
         background-color: transparent;
         border: none;
-        border-bottom: 2px solid #33ff69;
+        border-bottom: 2px solid #3f3;
         padding: 16px;
         width: 145px;
         font-size: 48px;
@@ -224,7 +229,7 @@ export default {
 }
 
 .inp-btn {
-    color: #33ff69;
+    color: #3f3;
     background-color: transparent;
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
@@ -259,12 +264,12 @@ main {
 
 h1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
     font-weight: bold;
-    color: #41F934;
-    background-color: rgb(23, 23, 23);
+    color: #3f3;
+    font-size: 29px;
     transform: all 3s ease-in-out;
     scale: 1;
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.75);
 }
 
 /* unvisited link */
@@ -287,7 +292,7 @@ a:hover {
 
 /* selected link */
 a:active {
-    color: #41F934;
+    color: #3f3;
     text-decoration: none;
 }
 
@@ -301,7 +306,6 @@ a:active {
 }
 
 h1 {
-    font-size: 3em;
     margin: 0.6em 0;
     font-weight: bold;
 }

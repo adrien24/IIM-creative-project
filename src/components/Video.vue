@@ -55,7 +55,7 @@ export default {
             <span></span>
             <span></span>
         </div>
-        <video autoplay muted id="myVideo">
+        <video muted id="myVideo">
             <source src="../assets/videos/bg-home.mp4" type="video/mp4">
         </video>
     </div>
@@ -186,7 +186,7 @@ export default {
         z-index: 1;
         font-size: 16rem;
         opacity: 1;
-        color: #41F934;
+        color: #3f3;
         mix-blend-mode: difference;
         font-family: 'Megatron';
     }
