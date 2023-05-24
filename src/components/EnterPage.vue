@@ -4,13 +4,21 @@
             <div class="typewriter">
 
             </div>
+            <!-- <div class="wrapper">
+                <span id="text"> -->
+            <!--   this is a custom text written to show my easy approaches to make the typewriting easy! -->
+            <!-- </span>
+                <span id="cursor">|</span>
+            </div> -->
             <div class="code">
                 <label for="inp" class="inp">
                     <span class="label">code</span>
                     <input type="text" id="inp" placeholder="&nbsp;" maxlength="3" v-model="code">
                     <span class="focus-bg"></span>
                 </label>
-                <button type="button" class="inp-btn">Entrer</button>
+                <button type="button" class="inp-btn" @click="enter">
+                    <div id="messenger"></div>
+                </button>
             </div>
         </div>
         <div class="access">
@@ -28,6 +36,8 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+import { Messenger } from '../assets/js/buttonGlitch.js'
 
 export default {
     name: 'EnterPage',
@@ -42,9 +52,22 @@ export default {
     mounted() {
         document.querySelector('body').style.overflow = 'hidden';
         this.animePoint();
+        var messenger = new Messenger($('#messenger'));
+        // gsap.fromTo('#cursor', { autoAlpha: 0, x: -20 }, { autoAlpha: 1, duration: 0.5, repeat: -1, ease: "steps(12)" });
+
+        // let tween = gsap.to("#text", { text: { value: "this is a custom text written to show my easy approaches to make the typewriting easy!" }, duration: 5, delay: 1, ease: "none" })
     },
 
     methods: {
+
+        enter() {
+            let welcome = document.querySelector('.welcome');
+            welcome.style.display = 'none';
+
+            let access = document.querySelector('.access');
+            access.style.display = 'block';
+        },
+
         animePoint() {
             setTimeout(() => {
                 document.querySelector('.first').style.visibility = 'visible';
@@ -143,6 +166,7 @@ export default {
 
 .inp {
     display: flex;
+    gap: 16px;
     align-items: center;
     margin-top: 30px;
 
@@ -162,7 +186,6 @@ export default {
         color: #33ff69;
         font-family: 'Press Start 2P', cursive;
         background-color: black;
-        margin-left: 16px;
         border: none;
         border-bottom: 2px solid #33ff69;
         padding: 16px;
@@ -182,6 +205,9 @@ export default {
     border: none;
     padding: 16px;
     font-size: 32px;
+    width: 224px;
+    height: 64px;
+    cursor: pointer;
 }
 
 .code {
@@ -197,6 +223,8 @@ export default {
 
 .center {
     position: fixed;
+    background-image: url('../assets/img/bg_tv.gif');
+
 }
 
 
