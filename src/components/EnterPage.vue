@@ -1,11 +1,29 @@
 <template>
     <main class="center">
-        <h1 class="title">
-            <span class="glitch" data-text="help•">
-                <span class="flex">initialisation<span class="first">.</span><span class="second">.</span><span
-                        class="third">.</span></span>
-            </span>
-        </h1>
+        <div class="welcome">
+            <div class="typewriter">
+
+            </div>
+            <div class="code">
+                <label for="inp" class="inp">
+                    <span class="label">code</span>
+                    <input type="text" id="inp" placeholder="&nbsp;" maxlength="3" v-model="code">
+                    <span class="focus-bg"></span>
+                </label>
+                <button type="button" class="inp-btn">Entrer</button>
+            </div>
+        </div>
+        <div class="access">
+
+        </div>
+        <div class="init">
+            <h1 class="title">
+                <span class="glitch" data-text="help•">
+                    <span class="flex">initialisation<span class="first">.</span><span class="second">.</span><span
+                            class="third">.</span></span>
+                </span>
+            </h1>
+        </div>
     </main>
 </template>
 
@@ -13,11 +31,17 @@
 
 export default {
     name: 'EnterPage',
+
+    data() {
+        return {
+            code: 0
+        }
+    },
+
+
     mounted() {
         document.querySelector('body').style.overflow = 'hidden';
         this.animePoint();
-
-
     },
 
     methods: {
@@ -46,7 +70,7 @@ export default {
             h1.style.opacity = '0';
 
             setTimeout(() => {
-                main.style.display = 'none';
+                // main.style.display = 'none';
             }, 1000);
         }
     }
@@ -56,9 +80,119 @@ export default {
 
 <style scoped lang="scss">
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+@import '../assets/css/animText.scss';
 
 // $bg-color: #4242e6;
 // $glitch-bg-color: $bg-color;
+
+
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+
+}
+
+
+@keyframes opacity1 {
+    0% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0;
+        opacity: 1;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: rgba(51, 255, 51, 0.75);
+    }
+}
+
+
+.inp {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+
+    .label {
+        color: #33ff69;
+        font-family: 'Press Start 2P', cursive;
+        background-color: black;
+        margin-left: 16px;
+        padding: 16px;
+        font-size: 16px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    input {
+        color: #33ff69;
+        font-family: 'Press Start 2P', cursive;
+        background-color: black;
+        margin-left: 16px;
+        border: none;
+        border-bottom: 2px solid #33ff69;
+        padding: 16px;
+        width: 145px;
+        font-size: 48px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+.inp-btn {
+    color: #33ff69;
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+    margin-top: 50px;
+    border: none;
+    padding: 16px;
+    font-size: 32px;
+}
+
+.code {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    animation: opacity 1s forwards;
+    animation-delay: 5s;
+}
 
 
 .center {
@@ -71,6 +205,7 @@ main {
 }
 
 h1 {
+    display: none;
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     font-weight: bold;
@@ -114,7 +249,6 @@ a:active {
 }
 
 h1 {
-    display: block;
     font-size: 3em;
     margin: 0.6em 0;
     font-weight: bold;
