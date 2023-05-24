@@ -4,25 +4,29 @@
             <div class="pre-loader-container">
                 <div class="header">
                     <h1>Megatron</h1>
+                    <img src="../assets/img/megatron.jpg" alt="megatron image">
                     <div class="header-wrapper"></div>
                 </div>
                 <div class="header concat first">
-                    <h1 data-text="LOGICIEL" class="premier">LOGICIEL</h1>&nbsp;&nbsp;
-                    <h1>...de batard</h1>
+                    <h1><span data-text="LOGICIEL" class="premier">LOGICIEL
+                        </span> ...de batard
+                    </h1>
+                    <img src="../assets/img/head.png" alt="trinityville image">
                     <div class="header-wrapper"></div>
                 </div>
                 <div class="header">
                     <h1>trinityville nakré</h1>
+                    <img src="../assets/img/trinityville.jpg" alt="trinityville image">
                     <div class="header-wrapper"></div>
                 </div>
                 <div class="header">
                     <h1>longue vie...</h1>
+                    <img src="../assets/img/hillz.jpg" alt="hillz image">
                     <div class="header-wrapper"></div>
                 </div>
                 <div class="header concat">
-                    <h1>poizon</h1>&nbsp;&nbsp;
-                    <h1 data-text="TRINITY" class="deuxieme">TRINITY</h1>
-
+                    <h1>poizon <span data-text="TRINITY" class="deuxieme">TRINITY</span></h1>
+                    <img src="../assets/img/poizon.jpg" alt="trinityville image">
                     <div class="header-wrapper"></div>
                 </div>
             </div>
@@ -42,9 +46,34 @@ export default {
         let sound = document.getElementById('first');
 
         this.animate();
+        this.imageHover();
     },
 
     methods: {
+
+        imageHover() {
+            const items = document.querySelectorAll('.header')
+            console.log(items)
+            items.forEach((el) => {
+                const image = el.querySelector('img')
+                console.log(image)
+
+                el.addEventListener('mouseenter', (e) => {
+                    gsap.to(image, { autoAlpha: 1 })
+                })
+
+                el.addEventListener('mouseleave', (e) => {
+                    gsap.to(image, { autoAlpha: 0 })
+                })
+
+                el.addEventListener('mousemove', (e) => {
+                    gsap.set(image, {
+                        force3D: true,
+                        x: e.offsetX - 200, y: e.offsetY - 200
+                    })
+                })
+            })
+        },
 
         elementPosition(a) {
             var b = a.getBoundingClientRect();
@@ -132,8 +161,21 @@ export default {
             width: max-content;
             margin: 0 auto;
 
-            .before {
+            img {
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                object-fit: cover;
+                transform: translate3d(0, 0, 0);
+                top: 0;
+                left: 0;
+                z-index: -10;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
 
+            .before {
                 &::before {
                     content: attr(data-text);
                     position: absolute;
@@ -141,6 +183,7 @@ export default {
                     color: #FFF;
                     transition: 1s;
                     width: 0%;
+                    text-align: left;
                     animation: fill 2s cubic-bezier(0.6, 0, 0.4, 1) forwards;
                 }
             }
@@ -153,9 +196,12 @@ export default {
                 font-family: sans-serif;
                 font-size: 7vw;
                 line-height: 90%;
-                color: #0a0a0a;
-                -webkit-text-stroke: 2px rgba(65, 249, 52, 0.7);
+                color: rgba(10, 10, 10, 0.8);
+                -webkit-text-stroke: 2px rgba(65, 249, 52, 0.8);
 
+                span {
+                    position: relative;
+                }
 
 
                 &::after {
