@@ -12,6 +12,7 @@ export default {
 
         setTimeout(() => {
             document.querySelector('body').style.overflowY = 'scroll';
+            window.scrollTo(0, 0);
         }, 5500);
     },
 

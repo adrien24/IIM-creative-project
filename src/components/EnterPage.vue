@@ -55,9 +55,11 @@ export default {
 
 
     mounted() {
+
         document.querySelector('body').style.overflow = 'hidden';
         this.animePoint();
         var messenger = new Messenger($('#messenger'));
+
 
     },
 
