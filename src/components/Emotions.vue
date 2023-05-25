@@ -164,7 +164,7 @@ export default {
   --clip-top: calc(var(--stack-height) * var(--index));
   --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
   clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-  animation: stack 340ms cubic-bezier(.46, .29, 0, 1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 0.5 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2.5s alternate-reverse;
 }
 
 .stack span:nth-child(odd) {
