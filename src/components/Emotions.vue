@@ -15,6 +15,7 @@
         <video autoplay loop muted class="emotions-video">
           <source src="../assets/videos/emotions.mp4" type="video/mp4">
         </video>
+        <Soundbar @click="son()" class="emotionalSound" emotional="emotionalSound" />
       </div>
       <div class="emotions-desc emotions-desc--right">
         <span class="emotions">Taux de compatibilité élevé</span>
@@ -25,11 +26,17 @@
 
 
 <script>
+import Soundbar from './Soundbar.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
+
+  components: {
+    Soundbar
+  },
+
   mounted() {
     this.animation();
   },
@@ -39,6 +46,14 @@ export default {
       let tl = gsap.timeline();
       tl.to('.emotions-desc--left', { x: '0%', duration: 1, delay: 1, scrollTrigger: '.stimulation' })
       tl.to('.emotions-desc--right', { x: '0%', duration: 1, delay: 1, scrollTrigger: '.emotions' })
+    },
+
+
+    son() {
+      let emotional = document.querySelector('.emotions-video');
+      let soundBars = document.querySelector('.emotionalSound');
+      soundBars.classList.toggle('paused');
+      emotional.muted = !emotional.muted;
     }
   }
 }
@@ -82,6 +97,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+
 
     .header {
       position: relative;
@@ -164,7 +181,7 @@ export default {
   --clip-top: calc(var(--stack-height) * var(--index));
   --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
   clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 0.5 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2.5s alternate-reverse;
+  animation: stack 340ms cubic-bezier(.46, .29, 0, 1.24) 0.5 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2.5s alternate-reverse;
 }
 
 .stack span:nth-child(odd) {

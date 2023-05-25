@@ -1,4 +1,7 @@
 <script>
+import Soundbar from './Soundbar.vue';
+
+
 
 export default {
     name: 'Video',
@@ -10,6 +13,10 @@ export default {
         setTimeout(() => {
             document.querySelector('body').style.overflowY = 'scroll';
         }, 5500);
+    },
+
+    components: {
+        Soundbar
     },
 
     methods: {
@@ -56,12 +63,7 @@ export default {
                 <span style="--index: 2;">TRINITY</span>
             </div>
         </div>
-        <div id="sound-bars" class="paused" @click="son()">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <Soundbar @click="son()" emotional="trinity" />
         <video muted id="myVideo">
             <source src="../assets/videos/bg-home.mp4" type="video/mp4">
         </video>
@@ -80,113 +82,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    #sound-bars {
-        z-index: 10;
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 16px;
-        width: 16px;
-        padding: 20px;
-        border-radius: 100%;
-        background: rgba(255, 255, 255, .2);
-        cursor: pointer;
 
-        span {
-            background: #fff;
-            margin: auto 1px 0;
-            height: 100%;
-            width: 2px;
-            // Using 1 occasionally offsets UI :/
-            transform: scaleY(.99);
-            transform-origin: bottom;
-            box-shadow: 0 4px 0 rgba(255, 255, 255, .2);
-            transition: all .4s ease-in-out;
-
-            // Create different height bars
-            &:nth-child(1) {
-                transform: scaleY(.8);
-            }
-
-            &:nth-child(2) {
-                transform: scaleY(.6);
-            }
-
-            &:nth-child(4) {
-                transform: scaleY(.4);
-            }
-        }
-
-        &:not(.paused)>span {
-            // Run initial animation on each un-pause event
-            animation: sound-bars-animation 2s 2 alternate;
-
-            // Scatter animations
-            &:nth-child(1) {
-                animation-delay: .4s;
-            }
-
-            &:nth-child(2) {
-                animation-delay: .2s;
-            }
-
-            &:nth-child(3) {
-                animation-delay: .6s;
-            }
-
-            &:nth-child(4) {
-                animation-delay: .8s;
-            }
-        }
-
-        &:before {
-            content: "";
-            position: absolute;
-            opacity: 0;
-            height: 0;
-            width: 0;
-            background: #fff;
-            border-radius: 100%;
-            transition: all .4s ease-in-out;
-            cursor: pointer;
-        }
-
-        &:hover {
-            &:before {
-                // Show larger circle on hover
-                width: calc(100% + 8px);
-                height: calc(100% + 8px);
-                opacity: 1;
-            }
-
-            >span {
-                background: #000;
-            }
-        }
-
-        // Settle animation on pause
-        &.paused>span {
-            opacity: .2;
-            transform: scaleY(.2);
-        }
-    }
-
-    @keyframes sound-bars-animation {
-
-        // 0% - 50% uses inherited properties  
-        50% {
-            opacity: .2;
-            transform: scaleY(.2);
-        }
-
-        100% {
-            opacity: 1;
-            transform: scaleY(1);
-        }
-    }
 
     h1 {
         position: relative;
@@ -229,57 +125,73 @@ export default {
     opacity: 1;
     color: #3f3;
     font-family: 'Megatron';
-    }
+}
 
 .stack {
-  display: grid;
-  grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .stack span {
-  font-weight: bold;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  font-size: 16rem;
-  --stack-height: calc(100% / var(--stacks) - 1px);
-  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
-  --clip-top: calc(var(--stack-height) * var(--index));
-  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
-  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-  animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 0.5 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2.5s alternate-reverse;
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 16rem;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46, .29, 0, 1.24) 0.5 backwards calc(var(--index) * 120ms), glitch 1s ease infinite 2.5s alternate-reverse;
 }
 
-.stack span:nth-child(odd) { --glitch-translate: 8px; }
-.stack span:nth-child(even) { --glitch-translate: -8px; }
+.stack span:nth-child(odd) {
+    --glitch-translate: 8px;
+}
+
+.stack span:nth-child(even) {
+    --glitch-translate: -8px;
+}
 
 @keyframes stack {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%);
-    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
-  };
-  60% {
-    opacity: 0.5;
-    transform: translateX(50%);
-  }
-  80% {
-    transform: none;
-    opacity: 1;
-    text-shadow: 2px -3px 0 #26ff00, -2px 3px 0 #70e85a;
-  }
-  100% {
-    text-shadow: none;
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+        text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    }
+
+    ;
+
+    60% {
+        opacity: 0.5;
+        transform: translateX(50%);
+    }
+
+    80% {
+        transform: none;
+        opacity: 1;
+        text-shadow: 2px -3px 0 #26ff00, -2px 3px 0 #70e85a;
+    }
+
+    100% {
+        text-shadow: none;
+    }
 }
 
 @keyframes glitch {
-  0% {
-    text-shadow: -2px 3px 0 #26ff00, 2px -3px 0 #70e85a;
-    transform: translate(var(--glitch-translate));
-  }
-  2% {
-    text-shadow: 2px -3px 0 #26ff00, -2px 3px 0 #70e85a;
-  }
-  4%, 100% {  text-shadow: none; transform: none; }
+    0% {
+        text-shadow: -2px 3px 0 #26ff00, 2px -3px 0 #70e85a;
+        transform: translate(var(--glitch-translate));
+    }
+
+    2% {
+        text-shadow: 2px -3px 0 #26ff00, -2px 3px 0 #70e85a;
+    }
+
+    4%,
+    100% {
+        text-shadow: none;
+        transform: none;
+    }
 }
 </style>
