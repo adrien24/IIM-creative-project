@@ -45,10 +45,21 @@
 
     export default {
         name: 'LinksOnHoverComponent',
+        data() {
+            return {
+                lastScrollYOffset: 0,
+                lastScrollXOffset: 0,
+                targetY: 0,
+            }
+        },
         mounted() {
             this.animate();
         },
         methods: {
+            onScrollMove() {
+                this.targetY += window.pageYOffset - this.lastScrollYOffset;
+                this.lastScrollYOffset = window.pageYOffset;
+            },
             animate(): void {
                 gsap.timeline().set('.menu', {autoAlpha: 1})
                     .from('.menu__item-inner-text', {
@@ -75,7 +86,7 @@
                     let bounds = item.getBoundingClientRect();
 
                     const onMouseEnter = () => {
-                        console.log('ici')
+                        console.log('ici');
                         gsap.set(wrapper, {
                             scale: .8,
                             xPercent: 15,
@@ -96,23 +107,28 @@
                     };
 
                     const onMouseMove = ({x, y}) => {
-                        let yOffset = bounds.top / wrapperBounds.height;
+                        console.log(window.pageYOffset);
+                        let yOffset = (bounds.top / wrapperBounds.height);
                         yOffset = gsap.utils.mapRange(0, 1.5, -150, 150, yOffset);
                         gsap.to(wrapper, {
                             duration: 1.25,
-                            x: Math.abs(x - bounds.left) - wrapperBounds.width ,
-                            y: Math.abs(y - bounds.top) - wrapperBounds.height / 2 - yOffset,
+                            x: Math.abs(x - bounds.left) - wrapperBounds.width,
+                            y: this.targetY,
                         });
 
                     };
 
-                    item.addEventListener("mouseenter", onMouseEnter);
-                    item.addEventListener("mouseleave", onMouseLeave);
-                    item.addEventListener("mousemove", onMouseMove);
+                    item.addEventListener('mouseenter', onMouseEnter);
+                    item.addEventListener('mouseleave', onMouseLeave);
+                    item.addEventListener('mousemove', onMouseMove);
 
-                    window.addEventListener("resize", () => {
+                    window.addEventListener('resize', () => {
                         bounds = item.getBoundingClientRect();
-                    })
+                    });
+
+                    window.addEventListener('scroll', () => {
+                        onScrollMove();
+                    });
 
                 });
             },
@@ -124,6 +140,7 @@
         width: 100vw;
         height: 100vh;
         background-image: url('../assets/img/bg_tv.gif');
+        padding: 2rem;
         .menu__item {
             width: max-content;
         }
@@ -176,5 +193,4 @@
             }
         }
     }
-
 </style>
