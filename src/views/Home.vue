@@ -5,7 +5,7 @@
         <Album />
         <Emotions />
         <Mode />
-        <Emotions/>
+        <Deconnexion />
     </div>
 </template>
 
@@ -15,6 +15,7 @@ import EnterPage from '../components/EnterPage.vue'
 import Album from '../components/Album.vue'
 import Emotions from '../components/Emotions.vue'
 import Mode from '../components/Mode.vue'
+import Deconnexion from '../components/Deconnexion.vue'
 
 export default {
     name: 'Home',
@@ -23,7 +24,8 @@ export default {
         EnterPage,
         Album,
         Emotions,
-        Mode
+        Mode,
+        Deconnexion
     }
 }
 </script>

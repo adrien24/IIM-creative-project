@@ -47,7 +47,7 @@ export default {
   methods: {
     animation() {
       let tl = gsap.timeline();
-      tl.to('.pre-loader-container', { opacity: '1', duration: 1, delay: 1, scrollTrigger: '.load-trigger' })
+      tl.to('.pre-loader-container', { opacity: '1', duration: 1, delay: 2, scrollTrigger: '.load-trigger' })
     }
   }
 }
@@ -60,6 +60,7 @@ export default {
   width: 100%;
   height: 100vh;
   background: #0a0a0a;
+  overflow: hidden;
   color: #e5e3dc;
   display: flex;
   justify-content: center;
