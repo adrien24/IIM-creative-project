@@ -23,6 +23,7 @@ export default {
       document.querySelector('body').style.overflow = 'hidden';
       document.querySelector('.image').style.display = 'block';
       setTimeout(() => {
+        window.scrollTo(0, 0);
         location.reload();
       }, 700);
 
