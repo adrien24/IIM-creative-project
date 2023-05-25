@@ -8,9 +8,9 @@
                     </div>
                 </div>
                 <span class="menu__item-text">
-                  <span class="menu__item-inner-text">
+                  <a href="https://www.behance.net/gallery/168765563/LAYLOW-TRINITY-DA" class="menu__item-inner-text">
                       Ræsilience
-                  </span>
+                  </a>
               </span>
             </div>
             <div class="menu__item">
@@ -20,9 +20,9 @@
                     </div>
                 </div>
                 <span class="menu__item-text">
-                  <span class="menu__item-inner-text">
+                  <a href="https://www.behance.net/gallery/140514641/Laylow-Live-Visuals-(Accor-Arena-2022)" class="menu__item-inner-text">
                       Polygon1993
-                  </span>
+                  </a>
               </span>
             </div>
             <div class="menu__item">
@@ -32,9 +32,9 @@
                     </div>
                 </div>
                 <span class="menu__item-text">
-                  <span class="menu__item-inner-text">
+                  <a href="https://genius.com/Laylow-megatron-lyrics" class="menu__item-inner-text">
                       GENIUS
-                  </span>
+                  </a>
               </span>
             </div>
         </nav>
@@ -97,10 +97,10 @@
 
                     const onMouseMove = ({x, y}) => {
                         let yOffset = bounds.top / wrapperBounds.height;
-                        yOffset = gsap.utils.mapRange(0, 1.5, -100, 100, yOffset);
+                        yOffset = gsap.utils.mapRange(0, 1.5, -150, 150, yOffset);
                         gsap.to(wrapper, {
                             duration: 1.25,
-                            x: Math.abs(x - bounds.left) - wrapperBounds.width / 1.55,
+                            x: Math.abs(x - bounds.left) - wrapperBounds.width ,
                             y: Math.abs(y - bounds.top) - wrapperBounds.height / 2 - yOffset,
                         });
 
@@ -121,9 +121,9 @@
 </script>
 <style scoped lang="scss">
     .container {
-        background-color: #0a0a0a;
         width: 100vw;
         height: 100vh;
+        background-image: url('../assets/img/bg_tv.gif');
         .menu__item {
             width: max-content;
         }
@@ -147,20 +147,29 @@
         }
         .menu__item-text {
             position: relative;
-            font-family: "ABC Whyte Inktrap Unlicensed Trial";
+            font-family: "Megatron", sans-serif;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 5vw;
+            font-size: 7vw;
             color: white;
             opacity: 1;
             transition: opacity 350ms ease;
             white-space: nowrap;
             overflow: hidden;
             cursor: ne-resize;
+            a {
+                text-decoration: none;
+                color: white;
+            }
         }
         .menu__item:hover {
             .menu__item-text {
-                color: green;
+                color: #33ff33;
+                a {
+                    text-decoration: none;
+                    color: #33ff33;
+                    cursor: ne-resize;
+                }
             }
             .menu__item-wrapper {
                 z-index: 2;
