@@ -21,6 +21,7 @@ export default {
   methods: {
     die() {
       document.querySelector('body').style.overflow = 'hidden';
+      document.body.classList.remove('red');
       document.querySelector('.image').style.display = 'block';
       setTimeout(() => {
         window.scrollTo(0, 0);

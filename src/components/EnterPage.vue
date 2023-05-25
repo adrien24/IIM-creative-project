@@ -45,7 +45,7 @@ export default {
 
     data() {
         return {
-            code: 0
+            code: '0'
         }
     },
 
@@ -66,6 +66,10 @@ export default {
     methods: {
 
         enter() {
+            if (this.code === '666') {
+                document.body.classList.add('red');
+            }
+
             let init = document.querySelector('.init');
             let welcome = document.querySelector('.welcome');
             welcome.style.display = 'none';
@@ -128,6 +132,8 @@ export default {
 #messenger {
     text-shadow: 0 0 5px rgba(51, 255, 51, 0.75);
 }
+
+
 
 .welcome,
 .init,
@@ -220,7 +226,7 @@ export default {
         border: none;
         border-bottom: 2px solid #3f3;
         padding: 16px;
-        width: 145px;
+        width: 180px;
         font-size: 48px;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;

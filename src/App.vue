@@ -14,4 +14,10 @@ export default {
   <Home />
 </template>
 
-<style scoped lang="scss"></style>
+<style  lang="scss">
+.red {
+
+  filter: hue-rotate(247deg) saturate(3.5);
+
+}
+</style>
