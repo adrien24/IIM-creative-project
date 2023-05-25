@@ -1,12 +1,12 @@
 <template>
     <div class="home">
-<!--        <EnterPage />-->
+        <EnterPage />
         <Video />
         <Album />
         <Emotions />
         <Mode />
-        <LinksOnHoverComponent/>
-<!--        <TVComponent/>-->
+        <LinksOnHoverComponent />
+        <!--        <TVComponent/>-->
         <Deconnexion />
     </div>
 </template>
@@ -36,6 +36,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
