@@ -43,7 +43,7 @@ export default {
 
   methods: {
     animation() {
-      let tl = gsap.timeline();
+      let tl = gsap.timeline({ scrub: 1 });
       tl.to('.emotions-desc--left', { x: '0%', duration: 1, delay: 1, scrollTrigger: '.stimulation' })
       tl.to('.emotions-desc--right', { x: '0%', duration: 1, delay: 1, scrollTrigger: '.emotions' })
     },

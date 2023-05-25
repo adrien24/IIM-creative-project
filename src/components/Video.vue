@@ -10,10 +10,7 @@ export default {
         this.animeTitle();
 
 
-        setTimeout(() => {
-            document.querySelector('body').style.overflowY = 'scroll';
-            window.scrollTo(0, 0);
-        }, 5500);
+
     },
 
     components: {

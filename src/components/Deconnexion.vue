@@ -24,7 +24,7 @@ export default {
       document.querySelector('.image').style.display = 'block';
       setTimeout(() => {
         location.reload();
-      }, 1500);
+      }, 700);
 
     }
   },

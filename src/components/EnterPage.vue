@@ -84,6 +84,8 @@ export default {
                         video.play();
                         let main = document.querySelector('.center');
                         main.style.display = 'none';
+                        document.querySelector('body').style.overflowY = 'scroll';
+
                     }, 1000);
                 }, 4000);
             }, 6500);
