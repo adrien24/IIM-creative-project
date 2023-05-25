@@ -17,7 +17,7 @@
         </video>
       </div>
       <div class="emotions-desc emotions-desc--right">
-        <span class="emotions">Mode stimulation émotionnelle</span>
+        <span class="emotions">Taux de compatibilité élevé</span>
       </div>
     </div>
   </div>

@@ -4,6 +4,8 @@
         <Video />
         <Album />
         <Emotions />
+        <Mode />
+        <Emotions/>
     </div>
 </template>
 
@@ -12,6 +14,7 @@ import Video from '../components/Video.vue'
 import EnterPage from '../components/EnterPage.vue'
 import Album from '../components/Album.vue'
 import Emotions from '../components/Emotions.vue'
+import Mode from '../components/Mode.vue'
 
 export default {
     name: 'Home',
@@ -19,7 +22,8 @@ export default {
         Video,
         EnterPage,
         Album,
-        Emotions
+        Emotions,
+        Mode
     }
 }
 </script>
