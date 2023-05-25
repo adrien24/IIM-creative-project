@@ -44,7 +44,7 @@ export default {
     cursor: pointer;
 
     span {
-        background: #fff;
+        background: #fff !important;
         margin: auto 1px 0;
         height: 100%;
         width: 2px;
